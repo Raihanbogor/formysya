@@ -4,10 +4,759 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For Mysya ♡</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html,body{
+  width:100%;
+  height:100%;
+  overflow:hidden;
+}
+
+body{
+  background:#f7f4ef;
+  color:#292622;
+  font-family:"DM Sans",sans-serif;
+}
+
+.page{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  padding:70px 24px 105px;
+  overflow-y:auto;
+  opacity:0;
+  transform:translateX(35px);
+  pointer-events:none;
+  transition:opacity .5s ease,transform .5s ease;
+}
+
+.page.active{
+  opacity:1;
+  transform:translateX(0);
+  pointer-events:auto;
+}
+
+.inner{
+  width:100%;
+  max-width:760px;
+  margin:0 auto;
+}
+
+.eyebrow{
+  font-size:11px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:#8d867d;
+  margin-bottom:22px;
+}
+
+h1,h2{
+  font-family:"Playfair Display",serif;
+  font-weight:400;
+  line-height:1.15;
+}
+
+h1{
+  font-size:clamp(42px,11vw,82px);
+}
+
+h2{
+  font-size:clamp(35px,8vw,62px);
+  margin-bottom:30px;
+}
+
+h3{
+  font-family:"Playfair Display",serif;
+  font-size:25px;
+  font-weight:400;
+  margin:38px 0 18px;
+}
+
+p{
+  font-size:15px;
+  line-height:1.9;
+  color:#514c46;
+  margin-bottom:18px;
+}
+
+.cover{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+
+.cover .inner{
+  max-width:700px;
+}
+
+.flower{
+  font-size:42px;
+  margin-bottom:28px;
+}
+
+.cover h1{
+  margin-bottom:20px;
+}
+
+.cover-sub{
+  font-family:"Playfair Display",serif;
+  font-style:italic;
+  color:#827a72;
+  font-size:18px;
+}
+
+.divider{
+  width:45px;
+  height:1px;
+  background:#cfc7be;
+  margin:35px auto;
+}
+
+.quote{
+  border-left:1px solid #cfc7be;
+  padding-left:20px;
+  margin:30px 0;
+  font-family:"Playfair Display",serif;
+  font-style:italic;
+  color:#655e56;
+  line-height:1.8;
+}
+
+.list{
+  list-style:none;
+  margin:25px 0;
+}
+
+.list li{
+  padding:13px 0;
+  border-bottom:1px solid #ddd7d0;
+  font-size:15px;
+  line-height:1.7;
+}
+
+.timeline-item{
+  position:relative;
+  padding:0 0 35px 25px;
+  border-left:1px solid #cfc7be;
+}
+
+.timeline-item:last-child{
+  border-left:0;
+}
+
+.timeline-item::before{
+  content:"";
+  position:absolute;
+  left:-4px;
+  top:5px;
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#8e867d;
+}
+
+.date{
+  font-size:11px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:#8d867d;
+  margin-bottom:9px;
+}
+
+.song{
+  padding:18px 0;
+  border-bottom:1px solid #ddd7d0;
+}
+
+.song strong{
+  font-family:"Playfair Display",serif;
+  font-size:18px;
+  font-weight:400;
+}
+
+.bottom{
+  position:fixed;
+  left:0;
+  right:0;
+  bottom:0;
+  height:75px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:20px;
+  background:rgba(247,244,239,.94);
+  backdrop-filter:blur(10px);
+  border-top:1px solid #e1dcd5;
+  z-index:10;
+}
+
+.nav-btn{
+  border:1px solid #cfc7be;
+  background:transparent;
+  color:#4d4842;
+  border-radius:30px;
+  padding:10px 18px;
+  font-family:"DM Sans",sans-serif;
+  cursor:pointer;
+}
+
+.nav-btn:active{
+  transform:scale(.96);
+}
+
+.counter{
+  font-size:11px;
+  color:#8d867d;
+  min-width:48px;
+  text-align:center;
+}
+
+.progress{
+  position:fixed;
+  top:0;
+  left:0;
+  height:2px;
+  background:#81786e;
+  width:0%;
+  z-index:20;
+  transition:width .4s ease;
+}
+
+@media(max-width:500px){
+  .page{
+    padding:55px 22px 100px;
+  }
+
+  p{
+    font-size:14px;
+  }
+
+  .list li{
+    font-size:14px;
+  }
+}
+</style>
 </head>
+
 <body>
 
-<h1>For Mysya ♡</h1>
+<div class="progress" id="progress"></div>
+
+<section class="page cover active">
+  <div class="inner">
+    <div class="flower">🌷</div>
+    <h1>For Mysya ♡</h1>
+    <div class="divider"></div>
+    <div class="cover-sub">buka pelan pelan yaa ♡</div>
+  </div>
+</section>
+
+<section class="page">
+<div class="inner">
+<div class="eyebrow">01 — Intro</div>
+<h2>hello, myyy</h2>
+
+<p>Hallo Sayang Mysya maaf yaa pagi pagi u harus repot buka kaya gini hehe i cuma mau nunjukin beberapa effort kecil i deh hehe buat kamu my lovee, lanjut ya</p>
+</div>
+</section>
+
+<section class="page">
+<div class="inner">
+<div class="eyebrow">02 — About You</div>
+<h2>a little thing about you ♡</h2>
+
+<p>kalau ditanya kenapa i bikin semua ini buat kamu??!...</p>
+
+<p>mungkin jawabannya sederhana bub.</p>
+
+<p>karena kamu itu seseorang yang menurut i, pantas banget dapet effort kecil kayak gini</p>
+
+<p>jadi di sini i mau nyimpen beberapa hal tentang kamu, tentang kita, dan tentang hal hal kecil yang mungkin selama ini sering kelewat hehehe</p>
+
+<p>pelan pelan yaa babee<br>
+kita mulai dari sini 🌷 muach</p>
+</div>
+</section>
+
+<section class="page">
+<div class="inner">
+<div class="eyebrow">03 — Things I Love</div>
+<h2>things i love about you ♡</h2>
+
+<p>hehe kaya di majalah ya selalu gini semoga ga bosen hehe♡</p>
+
+<p>sebenernya kalau disuruh nyebutin satu satu mungkin bakal panjanggggggggggg banget hehe.</p>
+
+<ul class="list">
+<li>♡ cara kamu ngomong sama i</li>
+<li>♡ perhatian kecil kamu</li>
+<li>♡ cara kamu bikin i ngerasa disayang</li>
+<li>♡ suara kamu</li>
+<li>♡ senyum kamu</li>
+<li>♡ semua hal kecil tentang kamu yang mungkin menurut kamu biasa aja, tapi buat i berarti banget.</li>
+<li>♡ your humor babe</li>
+<li>♡ dan tiap u kabarin i pake video note</li>
+</ul>
+
+<p>dan masih banyak banget tauuu</p>
+
+<p>mungkin kamu nggak sadar, tapi banyak banget hal tentang kamu yang i cintaii dan suka bangett babe hehe</p>
+</div>
+</section>
+
+<section class="page">
+<div class="inner">
+<div class="eyebrow">04 — About Us</div>
+<h2>little things about us ♡</h2>
+
+<p>hehe kalau yang tadi tentang kamu, sekarang giliran sedikit tentang kitaa muach</p>
+
+<p>mungkin buat orang lain hal hal ini keliatannya biasa aja atau bahkan nggak penting kali ya?</p>
+
+<p>tapi entah kenapa buat i, hal hal kecil tentang kita selalu punya tempat sendiri di hati i hehe</p>
+
+<ul class="list">
+<li>♡ cara kita ngobrol dari hal penting sampe hal yang nggak jelas and shift malam HAHA</li>
+<li>♡ saling cerita hal random yang sebenernya nggak harus diceritain</li>
+<li>♡ kamu yang tiba tiba ngabarin i</li>
+<li>♡ panggilan panggilan kecil yang cuma kita yang ngerti LIKE POOPIE PRINCESS</li>
+<li>♡ momen dimana kita cuma ngobrol sambil santai di tp tapi tau tau udah lama banget</li>
+<li>♡ ketawa bareng gara gara sesuatu yang sebenernya receh banget</li>
+<li>♡ dan semua momen kecil yang mungkin kita lupa, tapi pernah bikin kita seneng.</li>
+<li>♡moment di mobil kita first time kiss hehe</li>
+</ul>
+
+<p>ternyata kalau dipikir pikir</p>
+
+<p>kita punya banyak banget little things yang cuma jadi milik kita berdua ♡</p>
+
+<p>dan i suka bangett sama itu dan i harap ga pernah hilang</p>
+</div>
+</section>
+
+<section class="page">
+<div class="inner">
+<div class="eyebrow">05 — Our Story</div>
+<h2>our timeline ♡</h2>
+
+<p>dari awal kita kenal sampai sekarang...</p>
+
+<p>kalau dipikir pikir, ternyata banyak banget yaa hal yang udah kita lewatin bareng</p>
+
+<p>dan lucunya, dulu mungkin i nggak pernah nyangka kalau seseorang yang awalnya cuma i kenal dan DM lewat ig, akhirnya bisa jadi seseorang yang sepenting ini buat i</p>
+
+<div class="timeline-item">
+<div class="date">the beginning ♡</div>
+<h3>17 Desember 19.10</h3>
+<p>di sinilah semuanya mulai</p>
+
+<p>i ga akan pernah bosenn nginget dan baca ulang semua chat kita mulai dari haii, sorry for bothering uu boleh kenalan ga? disitu i degdeg an banget WKWK TAKUT GA DI JAWAB HEHE LALU LALU KITA NGOBROLIN REALITY CLUB HEHE DISITU I KAYA ORANG FOMO RC KARENA GA DENHER ALBUM BARU WKWK<br>
+TERUS KITA SERING NGOBROL</p>
+</div>
+
+<div class="timeline-item">
+<div class="date">getting closer ♡</div>
+<p>HEHE KITA TUH DARI DESEMBER JUGA UDAH DEKET TAMBAH KE JANUARI HEHE UDAH DEKET BANGET U PULSNG CAMP I TUNGGGUIN AND MORE I MANGGUNG LATIHAN NGABARIN HEHE DISITU MULAI DEKET</p>
+</div>
+
+<div class="timeline-item">
+<div class="date">our firsts ♡</div>
+<h3>first meet</h3>
+<p><strong>7 Mei 2026</strong></p>
+
+<p>HIHI I MASIH INGET BETAPA NERVOUS NYA AKU PAS NUNGGU U DI DEPAN ES COKLAT MAKAN ESKELIM TEYUSS U NGELIAT I I SAMPERIN TERYSS UU KOKOP ESKRIM AKU WEYY HAHA LALU KITA LARI KE PHOTOMATIC AIRPORT MESKI HAMPIR KETABRAK BANDROS HAHAHAHAA</p>
+
+<p>ABIS TUU KITA FOTO KAYA MALING BURU BURU BANGET WKWK DISITU KITA NGOBROL HEHE I LIAT CANTIKKK BANGETTTSSS LEBIH DARI DI FOTO WOIEIII HAHA ABISNTU KITA BERPISAH NYA DRAMATIS BANHET LARI LARI</p>
+</div>
+
+<div class="timeline-item">
+<div class="date">us ♡</div>
+
+<p>SEBENERNYA KITA GA PERNAH NEMBAK RESMI KAN HAHA TAU TAU JADIAN TAPI I BERSYUKUR U CEWE NYA GA RIBET STANDAR TIKTOK DLL I BERSYUKUR U TUH MAU DI AJAK INI ITU HEHE LOVEE UU BB</p>
+</div>
+
+<div class="timeline-item">
+<div class="date">until now ♡</div>
+
+<p>sekarang</p>
+
+<p>dan ternyata perjalanan kita nggak berhenti di situ ga kerasa ya udah hampir 1 tahun hubungan kita weyy</p>
+
+<p>masih banyak banget cerita, ketawa, random moment, shift malam HAHA, dan hal hal kecil lainnya yang akhirnya jadi bagian dari kita.</p>
+
+<p>dan i masih pengen nambah banyak banget cerita lagi sama kamu sayang</p>
+
+<p><em>to be continued... ♡</em></p>
+</div>
+
+</div>
+</section>
+
+<section class="page">
+<div class="inner">
+<div class="eyebrow">06 — Music</div>
+<h2>our soundtrack ♡</h2>
+
+<p>hehe ternyata ada beberapa lagu yang kalau i dengerin, pasti langsung keinget kamu</p>
+
+<p>mungkin buat orang lain ini cuma lagu biasa</p>
+
+<p>tapi buat i, lagu lagu ini punya cerita dan rasa masing masing tentang kamu dan tentang kita.</p>
+
+<div class="song">🎵 Reality Club — Anything You Want</div>
+<div class="song">🎵 Payung Teduh — Akad</div>
+<div class="song">🎵 David Bayu — Segalanya Itu Kamu</div>
+<div class="song">🎵 David Bayu — Cincin</div>
+<div class="song">🎵 David Bayu — Di Dalam Jiwa</div>
+
+<p style="margin-top:25px;">dan  masih banyak lagi</p>
+
+<p>setiap lagu ini punya cara sendiri buat bikin i inget sama kamu.</p>
+
+<p>maybe someday, pas kita denger lagu lagu ini lagi, kita bakal inget sama cerita kita yang sekarang. ♡ dan kita bakal nonton konser live bareng nonton mereka aamiin hehe di setiap lagu romantis hanya wajah mu yang ku ingat sayang</p>
+</div>
+</section>
+
+<section class="page">
+<div class="inner">
+<div class="eyebrow">07 — Someday</div>
+<h2>things i wanna do with you ♡</h2>
+
+<p>sebenernya masih banyak banget hal yang pengen i lakuin sama kamu hehe.</p>
+
+<p>hal hal kecil yang mungkin keliatannya sederhana, tapi bakal jadi kenangan yang seru kalau dilakuin bareng kamu hehe</p>
+
+<ul class="list">
+<li>♡ nonton konser bareng</li>
+<li>♡ jalan jalan ke tempat yang belum pernah kita datengin banyak di Bandung</li>
+<li>♡ makan bareng dan nyobain makanan yang belum kita coba</li>
+<li>♡ foto video  sebanyak banyaknya</li>
+<li>♡ bikin lebih banyak memories</li>
+<li>♡ nonton film bareng belum sempet sempet woi</li>
+<li>♡ jalan jalan tanpa tujuan HAHA</li>
+</ul>
+
+<p>i nggak tau kapan semuanya bisa kita lakuin</p>
+
+<p>tapi i hope someday kita bisa nyoret satu satu dari list ini bareng bareng</p>
+
+<p>dan kalau boleh</p>
+
+<p>i masih mau bikin banyak banget cerita sama kamu cayang cuu</p>
+</div>
+</section>
+
+<section class="page">
+<div class="inner">
+<div class="eyebrow">08 — A Letter</div>
+<h2>a letter for you ♡</h2>
+
+<p>myyy...</p>
+
+<p>kalau sampai bagian ini berarti kamu udah baca hampir semuanya hehe.</p>
+
+<p>i sebenernya nggak tau harus mulai dari mana, karena rasanya banyak banget yang pengen i bilang ke kamu.</p>
+
+<p>selama kita bareng, i belajar kalau ternyata rasa sayang itu nggak selalu tentang hal besar. kadang cuma dari chat kecil, kabar random, ketawa bareng, atau sekadar tau kalau hari ini kamu baik baik aja.</p>
+
+<p>dan i bersyukur banget semua hal kecil itu bisa i rasain sama kamu.</p>
+
+<p>i tau i bukan orang yang selalu sempurna buat kamu. kadang i bisa ngeselin, kadang terlalu banyak mikir, kadang ada aja tingkah i yang mungkin bikin kamu kesel hehe.</p>
+
+<p>tapi satu hal yang i tau, i’ll always love you and appreciate having you in my life.</p>
+
+<p>dan satu hal lagi yang mungkin nggak selalu i bilang...</p>
+
+<p>i’m really proud of you, myyy.</p>
+
+<p>i’m proud of how far you’ve come, of the things you’ve been through, and of how you keep going even when things aren’t always easy.</p>
+
+<p>mungkin i nggak selalu tau apa yang ada di kepala kamu atau apa yang lagi kamu hadapin, tapi i hope you know that i’ll always be proud of you, even for the little things.</p>
+
+<p>makasih yaa, udah mau nemenin i sampai sejauh ini.</p>
+
+<p>makasih udah mau dengerin cerita i, nemenin hari hari i, dan jadi bagian dari banyak banget momen yang sekarang jadi kenangan favorit i.</p>
+
+<p>i don’t know what the future holds for us.</p>
+
+<p>i don't know exactly what tomorrow looks like, but i know i still wanna see it with you.</p>
+
+<p>tapi i hope we can keep making memories together, ketawa bareng, jalan jalan bareng, nonton konser bareng, dan melakukan hal hal random yang cuma kita yang ngerti hehe.</p>
+
+<p>i hope someday we can look back at all of this and say,</p>
+
+<div class="quote">"anjir, ternyata kita udah sejauh ini yaa."</div>
+
+<p>so yeah...</p>
+
+<p>thank you for being you, myyy.</p>
+
+<p>thank you for staying with me.</p>
+
+<p>and thank you for becoming one of the most important people in my life.</p>
+
+<p>i love you so much, babee.</p>
+
+<p>always, anytime, anywhere. ♡</p>
+</div>
+</section>
+
+<section class="page">
+<div class="inner">
+<div class="eyebrow">09 — Thank You</div>
+<h2>thank you ♡</h2>
+
+<p>myyy...</p>
+
+<p>thank you yaa.</p>
+
+<p>thank you for every little thing you’ve done for me, even the things you probably don’t realize meant so much to me.</p>
+
+<p>thank you for every chat, every call, every laugh, every random story, every video note, and every little moment we’ve shared.</p>
+
+<p>thank you for making my days feel a little warmer just by being there.</p>
+
+<p>thank you for being someone i can laugh with, talk to, and make memories with.</p>
+
+<p>and most importantly...</p>
+
+<p>thank you for being a part of my life.</p>
+
+<p>i might not always say it,</p>
+
+<p>but i really, really appreciate you.</p>
+
+<p>more than you know. ♡</p>
+</div>
+</section>
+
+<section class="page">
+<div class="inner">
+<div class="eyebrow">10 — Until Now</div>
+<h2>until now ♡</h2>
+
+<p>kalau i lihat kita sekarang...</p>
+
+<p>ternyata kita udah sejauh ini yaa, myyy.</p>
+
+<p>dari yang awalnya cuma dua orang yang ngobrol lewat ig, sampai akhirnya kamu jadi salah satu bagian paling penting dalam hari hari i.</p>
+
+<p>banyak banget hal yang udah kita lewatin.</p>
+
+<p>ada senengnya, ada capeknya, ada randomnya, ada dramanya juga HAHA.</p>
+
+<p>tapi somehow, kita masih di sini.</p>
+
+<p>masih ngobrol.<br>
+masih ketawa.<br>
+masih saling cerita.<br>
+masih bikin cerita baru.</p>
+
+<p>dan jujur...</p>
+
+<p>i’m really happy that it’s you.</p>
+
+<p>kalau semua yang udah kita lewatin sampai sekarang adalah bagian dari cerita kita,</p>
+
+<p>i hope this is only the beginning. ♡</p>
+</div>
+</section>
+
+<section class="page">
+<div class="inner">
+<div class="eyebrow">11 — The Future</div>
+<h2>our future ♡</h2>
+
+<p>kalau ditanya i pengen apa sama kamu kedepannya...</p>
+
+<p>sebenernya jawabannya banyak banget hehe.</p>
+
+<p>i pengen masih punya banyak waktu sama kamu.</p>
+
+<p>masih pengen ketemu kamu lagi, jalan jalan, nonton konser, makan bareng, foto foto, dan ngelakuin hal hal random yang bahkan sekarang belum kepikiran.</p>
+
+<p>i wanna see more places with you.</p>
+
+<p>i wanna make more memories with you.</p>
+
+<p>i wanna watch our favorite artists perform together.</p>
+
+<p>i wanna laugh at stupid things with you.</p>
+
+<p>i wanna see you grow, and i wanna grow with you.</p>
+
+<p>dan kalau suatu hari nanti kita buka lagi website ini...</p>
+
+<p>i hope kita bisa liat semua ini sambil bilang,</p>
+
+<div class="quote">"ternyata dulu kita pernah berharap sejauh ini yaa."</div>
+
+<p>i don't know exactly where life will take us.</p>
+
+<p>but wherever we end up,</p>
+
+<p>i hope there’s still a little place for me beside you.</p>
+
+<p>so for now...</p>
+
+<p>let's just keep going, keep loving, keep laughing, and keep making our little story.</p>
+
+<p>one day at a time.</p>
+
+<p>together. ♡</p>
+</div>
+</section>
+
+<section class="page">
+<div class="inner">
+<div class="eyebrow">12 — Not Really</div>
+<h2>the end? ♡</h2>
+
+<p>hehe kayanya ini bukan the end deh soal nya kita ga ada akhir nya dan cerita kita masih panjang bangetttt</p>
+
+<p>masih bakal ada banyak cerita baru,<br>
+banyak ketawa,<br>
+banyak momen random,<br>
+dan pastinya banyak hal kecil yang bakal kita lewatin bareng.</p>
+
+<p>jadi...</p>
+
+<p>sampai ketemu di cerita kita selanjutnya yaa, myyy lovee</p>
+
+<p>i love youu, always anytime anywhere♡</p>
+
+<p>muach 💋</p>
+</div>
+</section>
+
+<section class="page">
+<div class="inner">
+<div class="eyebrow">13 — After Closing</div>
+<h2>after closing ♡</h2>
+
+<p>kalau kamu masih baca sampai sini...</p>
+
+<p>berarti semuanya udah selesai hehe.</p>
+
+<p>makasih yaa, udah mau baca semuanya dari awal sampai akhir.</p>
+
+<p>mungkin website ini cuma kumpulan tulisan kecil dari i,</p>
+
+<p>tapi setiap kata di sini i tulis karena kamu.</p>
+
+<p>i hope someday kamu bisa buka ini lagi,</p>
+
+<p>entah pas lagi kangen,<br>
+lagi seneng,<br>
+atau cuma lagi pengen inget cerita kita.</p>
+
+<p>dan kalau suatu hari nanti kita udah punya jauh lebih banyak cerita daripada yang ada di sini...</p>
+
+<p>i hope we’ll come back to this page,</p>
+
+<p>look at everything we’ve been through,</p>
+
+<p>and smile.</p>
+
+<p>for now,</p>
+
+<p>this is where this little story ends.</p>
+
+<div class="quote">but ours?<br><br>not yet. ♡</div>
+
+<p>i love you, myyy.</p>
+
+<p>see you in our next chapter. 🌷</p>
+</div>
+</section>
+
+<div class="bottom">
+<button class="nav-btn" id="prev">←</button>
+<div class="counter" id="counter">1 / 14</div>
+<button class="nav-btn" id="next">→</button>
+</div>
+
+<script>
+const pages = document.querySelectorAll(".page");
+const counter = document.getElementById("counter");
+const progress = document.getElementById("progress");
+let index = 0;
+
+function showPage(i){
+  if(i < 0) i = 0;
+  if(i >= pages.length) i = pages.length - 1;
+
+  pages.forEach((page,n)=>{
+    page.classList.toggle("active", n === i);
+    if(n === i) page.scrollTop = 0;
+  });
+
+  index = i;
+  counter.textContent = `${index + 1} / ${pages.length}`;
+  progress.style.width = `${((index + 1) / pages.length) * 100}%`;
+
+  document.getElementById("prev").style.opacity =
+    index === 0 ? ".35" : "1";
+
+  document.getElementById("next").style.opacity =
+    index === pages.length - 1 ? ".35" : "1";
+}
+
+document.getElementById("next").addEventListener("click",()=>{
+  showPage(index + 1);
+});
+
+document.getElementById("prev").addEventListener("click",()=>{
+  showPage(index - 1);
+});
+
+document.addEventListener("keydown",(e)=>{
+  if(e.key === "ArrowRight" || e.key === " "){
+    e.preventDefault();
+    showPage(index + 1);
+  }
+
+  if(e.key === "ArrowLeft"){
+    e.preventDefault();
+    showPage(index - 1);
+  }
+});
+
+let startX = 0;
+let endX = 0;
+
+document.addEventListener("touchstart",(e)=>{
+  startX = e.changedTouches[0].screenX;
+});
+
+document.addEventListener("touchend",(e)=>{
+  endX = e.changedTouches[0].screenX;
+
+  const distance = endX - startX;
+
+  if(Math.abs(distance) < 50) return;
+
+  if(distance < 0){
+    showPage(index + 1);
+  }else{
+    showPage(index - 1);
+  }
+});
+
+showPage(0);
+</script>
 
 </body>
 </html>
