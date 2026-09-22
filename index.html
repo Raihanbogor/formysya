@@ -2,249 +2,431 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Mysya ♡</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<title>For You, Babe ♡</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
 
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-html,body{
-  width:100%;
-  height:100%;
-  overflow:hidden;
+html {
+  width: 100%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
-body{
-  background:#f7f4ef;
-  color:#292622;
-  font-family:"DM Sans",sans-serif;
+body {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: #eee9e1;
+  color: #292622;
+  font-family: "DM Sans", sans-serif;
 }
 
-.page{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  padding:70px 24px 105px;
-  overflow-y:auto;
-  opacity:0;
-  transform:translateX(35px);
-  pointer-events:none;
-  transition:opacity .5s ease,transform .5s ease;
+button {
+  font: inherit;
 }
 
-.page.active{
-  opacity:1;
-  transform:translateX(0);
-  pointer-events:auto;
+.book {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
 }
 
-.inner{
-  width:100%;
-  max-width:760px;
-  margin:0 auto;
+.page {
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: 70px 22px 90px;
+  display: none;
+  position: relative;
+  overflow: hidden;
 }
 
-.eyebrow{
-  font-size:11px;
-  letter-spacing:3px;
-  text-transform:uppercase;
-  color:#8d867d;
-  margin-bottom:22px;
+.page.active {
+  display: flex;
+  animation: pageIn .65s ease both;
 }
 
-h1,h2{
-  font-family:"Playfair Display",serif;
-  font-weight:400;
-  line-height:1.15;
-}
-
-h1{
-  font-size:clamp(42px,11vw,82px);
-}
-
-h2{
-  font-size:clamp(35px,8vw,62px);
-  margin-bottom:30px;
-}
-
-h3{
-  font-family:"Playfair Display",serif;
-  font-size:25px;
-  font-weight:400;
-  margin:38px 0 18px;
-}
-
-p{
-  font-size:15px;
-  line-height:1.9;
-  color:#514c46;
-  margin-bottom:18px;
-}
-
-.cover{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-}
-
-.cover .inner{
-  max-width:700px;
-}
-
-.flower{
-  font-size:42px;
-  margin-bottom:28px;
-}
-
-.cover h1{
-  margin-bottom:20px;
-}
-
-.cover-sub{
-  font-family:"Playfair Display",serif;
-  font-style:italic;
-  color:#827a72;
-  font-size:18px;
-}
-
-.divider{
-  width:45px;
-  height:1px;
-  background:#cfc7be;
-  margin:35px auto;
-}
-
-.quote{
-  border-left:1px solid #cfc7be;
-  padding-left:20px;
-  margin:30px 0;
-  font-family:"Playfair Display",serif;
-  font-style:italic;
-  color:#655e56;
-  line-height:1.8;
-}
-
-.list{
-  list-style:none;
-  margin:25px 0;
-}
-
-.list li{
-  padding:13px 0;
-  border-bottom:1px solid #ddd7d0;
-  font-size:15px;
-  line-height:1.7;
-}
-
-.timeline-item{
-  position:relative;
-  padding:0 0 35px 25px;
-  border-left:1px solid #cfc7be;
-}
-
-.timeline-item:last-child{
-  border-left:0;
-}
-
-.timeline-item::before{
-  content:"";
-  position:absolute;
-  left:-4px;
-  top:5px;
-  width:7px;
-  height:7px;
-  border-radius:50%;
-  background:#8e867d;
-}
-
-.date{
-  font-size:11px;
-  letter-spacing:2px;
-  text-transform:uppercase;
-  color:#8d867d;
-  margin-bottom:9px;
-}
-
-.song{
-  padding:18px 0;
-  border-bottom:1px solid #ddd7d0;
-}
-
-.song strong{
-  font-family:"Playfair Display",serif;
-  font-size:18px;
-  font-weight:400;
-}
-
-.bottom{
-  position:fixed;
-  left:0;
-  right:0;
-  bottom:0;
-  height:75px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:20px;
-  background:rgba(247,244,239,.94);
-  backdrop-filter:blur(10px);
-  border-top:1px solid #e1dcd5;
-  z-index:10;
-}
-
-.nav-btn{
-  border:1px solid #cfc7be;
-  background:transparent;
-  color:#4d4842;
-  border-radius:30px;
-  padding:10px 18px;
-  font-family:"DM Sans",sans-serif;
-  cursor:pointer;
-}
-
-.nav-btn:active{
-  transform:scale(.96);
-}
-
-.counter{
-  font-size:11px;
-  color:#8d867d;
-  min-width:48px;
-  text-align:center;
-}
-
-.progress{
-  position:fixed;
-  top:0;
-  left:0;
-  height:2px;
-  background:#81786e;
-  width:0%;
-  z-index:20;
-  transition:width .4s ease;
-}
-
-@media(max-width:500px){
-  .page{
-    padding:55px 22px 100px;
+@keyframes pageIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
   }
 
-  p{
-    font-size:14px;
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-inner {
+  width: 100%;
+  max-width: 760px;
+  margin: auto;
+}
+
+.center-page {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.editorial-page {
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.eyebrow {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #8b8277;
+  margin-bottom: 20px;
+}
+
+.page-number {
+  position: absolute;
+  top: 25px;
+  right: 22px;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #9b9288;
+}
+
+.line {
+  width: 55px;
+  height: 1px;
+  background: #b9afa3;
+  margin: 20px 0;
+}
+
+.center-page .line {
+  margin: 20px auto;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Playfair Display", serif;
+  font-weight: 400;
+}
+
+h1 {
+  font-size: clamp(42px, 13vw, 78px);
+  line-height: .98;
+  letter-spacing: -2px;
+}
+
+h2 {
+  font-size: clamp(34px, 9vw, 58px);
+  line-height: 1.05;
+  letter-spacing: -1.5px;
+  margin-bottom: 25px;
+}
+
+h3 {
+  font-size: 24px;
+  margin-bottom: 12px;
+}
+
+p {
+  font-size: 14px;
+  line-height: 1.9;
+  color: #625c55;
+}
+
+.cover {
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255,255,255,.65), transparent 28%),
+    radial-gradient(circle at 80% 75%, rgba(211,198,183,.35), transparent 32%),
+    #eee9e1;
+}
+
+.cover .page-inner {
+  text-align: center;
+}
+
+.cover-title {
+  margin-bottom: 22px;
+}
+
+.cover-title em {
+  display: block;
+  font-weight: 400;
+}
+
+.cover-subtitle {
+  max-width: 300px;
+  margin: 0 auto;
+  font-size: 13px;
+  line-height: 1.8;
+  color: #7d746b;
+}
+
+.cover-mark {
+  width: 52px;
+  height: 52px;
+  border: 1px solid #b8aea2;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 28px;
+  font-family: "Playfair Display", serif;
+  font-size: 19px;
+}
+
+.open-text {
+  margin-top: 38px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: #847b72;
+  animation: breathe 2.5s ease-in-out infinite;
+}
+
+@keyframes breathe {
+  0%,100% { opacity: .45; }
+  50% { opacity: 1; }
+}
+
+.intro-text {
+  max-width: 530px;
+  margin: 0 auto;
+}
+
+.intro-text p {
+  font-size: 15px;
+  line-height: 2;
+}
+
+.quote {
+  margin: 35px auto;
+  padding: 25px 18px;
+  border-top: 1px solid #c9c0b6;
+  border-bottom: 1px solid #c9c0b6;
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  font-size: 23px;
+  line-height: 1.45;
+  max-width: 580px;
+}
+
+.body-copy {
+  max-width: 650px;
+}
+
+.body-copy p {
+  margin-bottom: 19px;
+}
+
+.list {
+  list-style: none;
+  margin-top: 25px;
+  width: 100%;
+}
+
+.list li {
+  width: 100%;
+  padding: 15px 0;
+  border-bottom: 1px solid #d3cbc1;
+  font-size: 13px;
+  line-height: 1.65;
+  color: #514b45;
+}
+
+.list li::first-letter {
+  color: #8f8174;
+}
+
+.two-column {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.info-card {
+  padding: 22px;
+  border: 1px solid #d3cbc1;
+  background: rgba(255,255,255,.22);
+}
+
+.info-card p {
+  font-size: 13px;
+}
+
+.section-label {
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #93897f;
+  margin-bottom: 8px;
+}
+
+.timeline {
+  margin-top: 35px;
+  border-left: 1px solid #bdb3a8;
+  padding-left: 22px;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 35px;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #eee9e1;
+  border: 1px solid #8e8479;
+  left: -27px;
+  top: 6px;
+}
+
+.timeline-date {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #91877d;
+  margin-bottom: 8px;
+}
+
+.timeline-title {
+  font-family: "Playfair Display", serif;
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
+.song-card {
+  padding: 19px 0;
+  border-bottom: 1px solid #d1c8bd;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.song-icon {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #c0b6aa;
+  border-radius: 50%;
+  flex: 0 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+}
+
+.song-name {
+  font-family: "Playfair Display", serif;
+  font-size: 18px;
+}
+
+.song-artist {
+  font-size: 11px;
+  color: #938980;
+  margin-top: 3px;
+}
+
+.letter {
+  padding: 28px 20px;
+  background: rgba(255,255,255,.28);
+  border: 1px solid #d1c8bd;
+}
+
+.letter p {
+  margin-bottom: 19px;
+}
+
+.signature {
+  margin-top: 30px;
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  font-size: 24px;
+}
+
+.final-page {
+  text-align: center;
+}
+
+.final-page .body-copy {
+  margin: 0 auto;
+}
+
+.nav {
+  position: fixed;
+  z-index: 50;
+  bottom: 17px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 32px);
+  max-width: 430px;
+  height: 52px;
+  background: rgba(244,240,234,.92);
+  border: 1px solid #d0c7bd;
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 7px;
+}
+
+.nav button {
+  width: 42px;
+  height: 38px;
+  border: 0;
+  background: transparent;
+  color: #6d655e;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.nav button:active {
+  transform: scale(.92);
+}
+
+.counter {
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #8c8279;
+}
+
+.progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background: #777067;
+  z-index: 100;
+  transition: width .5s ease;
+}
+
+@media (min-width: 700px) {
+  .page {
+    padding: 90px 50px 110px;
   }
 
-  .list li{
-    font-size:14px;
+  .two-column {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .page-number {
+    right: 50px;
   }
 }
 </style>
@@ -254,507 +436,1003 @@ p{
 
 <div class="progress" id="progress"></div>
 
-<section class="page cover active">
-  <div class="inner">
-    <div class="flower">🌷</div>
-    <h1>For Mysya ♡</h1>
-    <div class="divider"></div>
-    <div class="cover-sub">buka pelan pelan yaa ♡</div>
+<div class="book">
+
+<!-- PAGE 1 -->
+<section class="page cover active center-page" data-page="1">
+  <div class="page-inner">
+
+    <div class="cover-mark">♡</div>
+
+    <div class="eyebrow">a little something for you</div>
+
+    <h1 class="cover-title">
+      For You,
+      <em>Babe.</em>
+    </h1>
+
+    <div class="line"></div>
+
+    <p class="cover-subtitle">
+      a small collection of words, memories,
+      and little things that remind me of you.
+    </p>
+
+    <div class="open-text">
+      tap anywhere to begin
+    </div>
+
   </div>
+
+  <div class="page-number">01</div>
 </section>
 
-<section class="page">
-<div class="inner">
-<div class="eyebrow">01 — Intro</div>
-<h2>hello, myyy</h2>
 
-<p>Hallo Sayang Mysya maaf yaa pagi pagi u harus repot buka kaya gini hehe i cuma mau nunjukin beberapa effort kecil i deh hehe buat kamu my lovee, lanjut ya</p>
-</div>
+<!-- PAGE 2 -->
+<section class="page center-page" data-page="2">
+  <div class="page-inner">
+
+    <div class="eyebrow">chapter one</div>
+
+    <h2>Hello, Babe ♡</h2>
+
+    <div class="line"></div>
+
+    <div class="intro-text">
+      <p>
+        Hallo Sayang Mysya maaf yaa pagi pagi u harus repot buka kaya gini hehe
+        i cuma mau nunjukin beberapa effort kecil i deh hehe buat kamu lovee,
+        lanjut ya
+      </p>
+    </div>
+
+    <div class="quote">
+      “some little things are worth keeping.”
+    </div>
+
+  </div>
+
+  <div class="page-number">02</div>
 </section>
 
-<section class="page">
-<div class="inner">
-<div class="eyebrow">02 — About You</div>
-<h2>a little thing about you ♡</h2>
 
-<p>kalau ditanya kenapa i bikin semua ini buat kamu??!...</p>
+<!-- PAGE 3 -->
+<section class="page editorial-page" data-page="3">
+  <div class="page-inner">
 
-<p>mungkin jawabannya sederhana bub.</p>
+    <div class="eyebrow">03 / a little thing about you</div>
 
-<p>karena kamu itu seseorang yang menurut i, pantas banget dapet effort kecil kayak gini</p>
+    <h2>A Little Thing<br>About You ♡</h2>
 
-<p>jadi di sini i mau nyimpen beberapa hal tentang kamu, tentang kita, dan tentang hal hal kecil yang mungkin selama ini sering kelewat hehehe</p>
+    <div class="line"></div>
 
-<p>pelan pelan yaa babee<br>
-kita mulai dari sini 🌷 muach</p>
-</div>
+    <div class="body-copy">
+
+      <p>
+        kalau ditanya kenapa i bikin semua ini buat kamu??!...
+      </p>
+
+      <p>
+        mungkin jawabannya sederhana bub.
+      </p>
+
+      <p>
+        karena kamu itu seseorang yang menurut i, pantas banget dapet
+        effort kecil kayak gini
+      </p>
+
+      <p>
+        jadi di sini i mau nyimpen beberapa hal tentang kamu, tentang kita,
+        dan tentang hal hal kecil yang mungkin selama ini sering kelewat hehehe
+      </p>
+
+      <div class="quote">
+        pelan pelan yaa babee<br>
+        kita mulai dari sini 🌷
+      </div>
+
+      <p style="text-align:center;">
+        muach
+      </p>
+
+    </div>
+
+  </div>
+
+  <div class="page-number">03</div>
 </section>
 
-<section class="page">
-<div class="inner">
-<div class="eyebrow">03 — Things I Love</div>
-<h2>things i love about you ♡</h2>
 
-<p>hehe kaya di majalah ya selalu gini semoga ga bosen hehe♡</p>
+<!-- PAGE 4 -->
+<section class="page editorial-page" data-page="4">
+  <div class="page-inner">
 
-<p>sebenernya kalau disuruh nyebutin satu satu mungkin bakal panjanggggggggggg banget hehe.</p>
+    <div class="eyebrow">04 / things i love</div>
 
-<ul class="list">
-<li>♡ cara kamu ngomong sama i</li>
-<li>♡ perhatian kecil kamu</li>
-<li>♡ cara kamu bikin i ngerasa disayang</li>
-<li>♡ suara kamu</li>
-<li>♡ senyum kamu</li>
-<li>♡ semua hal kecil tentang kamu yang mungkin menurut kamu biasa aja, tapi buat i berarti banget.</li>
-<li>♡ your humor babe</li>
-<li>♡ dan tiap u kabarin i pake video note</li>
-</ul>
+    <h2>Things I Love<br>About You</h2>
 
-<p>dan masih banyak banget tauuu</p>
+    <div class="line"></div>
 
-<p>mungkin kamu nggak sadar, tapi banyak banget hal tentang kamu yang i cintaii dan suka bangett babe hehe</p>
-</div>
+    <div class="body-copy">
+
+      <p>
+        hehe kaya di majalah ya selalu gini semoga ga bosen hehe♡
+      </p>
+
+      <p>
+        sebenernya kalau disuruh nyebutin satu satu mungkin bakal
+        panjanggggggggggg banget hehe.
+      </p>
+
+      <ul class="list">
+        <li>♡ cara kamu ngomong sama i</li>
+        <li>♡ perhatian kecil kamu</li>
+        <li>♡ cara kamu bikin i ngerasa disayang</li>
+        <li>♡ suara kamu</li>
+        <li>♡ senyum kamu</li>
+        <li>♡ semua hal kecil tentang kamu yang mungkin menurut kamu biasa aja, tapi buat i berarti banget.</li>
+        <li>♡ your humor babe</li>
+        <li>♡ dan tiap u kabarin i pake video note</li>
+      </ul>
+
+      <div class="quote">
+        dan masih banyak banget tauuu
+      </div>
+
+      <p>
+        mungkin kamu nggak sadar, tapi banyak banget hal tentang kamu
+        yang i cintaii dan suka bangett babe hehe
+      </p>
+
+    </div>
+
+  </div>
+
+  <div class="page-number">04</div>
 </section>
 
-<section class="page">
-<div class="inner">
-<div class="eyebrow">04 — About Us</div>
-<h2>little things about us ♡</h2>
 
-<p>hehe kalau yang tadi tentang kamu, sekarang giliran sedikit tentang kitaa muach</p>
+<!-- PAGE 5 -->
+<section class="page editorial-page" data-page="5">
+  <div class="page-inner">
 
-<p>mungkin buat orang lain hal hal ini keliatannya biasa aja atau bahkan nggak penting kali ya?</p>
+    <div class="eyebrow">05 / little things</div>
 
-<p>tapi entah kenapa buat i, hal hal kecil tentang kita selalu punya tempat sendiri di hati i hehe</p>
+    <h2>Little Things<br>About Us ♡</h2>
 
-<ul class="list">
-<li>♡ cara kita ngobrol dari hal penting sampe hal yang nggak jelas and shift malam HAHA</li>
-<li>♡ saling cerita hal random yang sebenernya nggak harus diceritain</li>
-<li>♡ kamu yang tiba tiba ngabarin i</li>
-<li>♡ panggilan panggilan kecil yang cuma kita yang ngerti LIKE POOPIE PRINCESS</li>
-<li>♡ momen dimana kita cuma ngobrol sambil santai di tp tapi tau tau udah lama banget</li>
-<li>♡ ketawa bareng gara gara sesuatu yang sebenernya receh banget</li>
-<li>♡ dan semua momen kecil yang mungkin kita lupa, tapi pernah bikin kita seneng.</li>
-<li>♡moment di mobil kita first time kiss hehe</li>
-</ul>
+    <div class="line"></div>
 
-<p>ternyata kalau dipikir pikir</p>
+    <div class="body-copy">
 
-<p>kita punya banyak banget little things yang cuma jadi milik kita berdua ♡</p>
+      <p>
+        hehe kalau yang tadi tentang kamu, sekarang giliran sedikit
+        tentang kitaa muach
+      </p>
 
-<p>dan i suka bangett sama itu dan i harap ga pernah hilang</p>
-</div>
+      <p>
+        mungkin buat orang lain hal hal ini keliatannya biasa aja atau
+        bahkan nggak penting kali ya?
+      </p>
+
+      <p>
+        tapi entah kenapa buat i, hal hal kecil tentang kita selalu punya
+        tempat sendiri di hati i hehe
+      </p>
+
+      <ul class="list">
+        <li>♡ cara kita ngobrol dari hal penting sampe hal yang nggak jelas and shift malam HAHA</li>
+        <li>♡ saling cerita hal random yang sebenernya nggak harus diceritain</li>
+        <li>♡ kamu yang tiba tiba ngabarin i</li>
+        <li>♡ panggilan panggilan kecil yang cuma kita yang ngerti LIKE POOPIE PRINCESS</li>
+        <li>♡ momen dimana kita cuma ngobrol sambil santai di tp tapi tau tau udah lama banget</li>
+        <li>♡ ketawa bareng gara gara sesuatu yang sebenernya receh banget</li>
+        <li>♡ dan semua momen kecil yang mungkin kita lupa, tapi pernah bikin kita seneng.</li>
+        <li>♡ momen pertama kali kita ketemu dan semua nervousnya hehe</li>
+      </ul>
+
+      <div class="quote">
+        ternyata kalau dipikir pikir<br>
+        kita punya banyak banget little things<br>
+        yang cuma jadi milik kita berdua ♡
+      </div>
+
+      <p>
+        dan i suka bangett sama itu dan i harap ga pernah hilang
+      </p>
+
+    </div>
+
+  </div>
+
+  <div class="page-number">05</div>
 </section>
 
-<section class="page">
-<div class="inner">
-<div class="eyebrow">05 — Our Story</div>
-<h2>our timeline ♡</h2>
 
-<p>dari awal kita kenal sampai sekarang...</p>
+<!-- PAGE 6 -->
+<section class="page editorial-page" data-page="6">
+  <div class="page-inner">
 
-<p>kalau dipikir pikir, ternyata banyak banget yaa hal yang udah kita lewatin bareng</p>
+    <div class="eyebrow">06 / our timeline</div>
 
-<p>dan lucunya, dulu mungkin i nggak pernah nyangka kalau seseorang yang awalnya cuma i kenal dan DM lewat ig, akhirnya bisa jadi seseorang yang sepenting ini buat i</p>
+    <h2>Our<br>Timeline ♡</h2>
 
-<div class="timeline-item">
-<div class="date">the beginning ♡</div>
-<h3>17 Desember 19.10</h3>
-<p>di sinilah semuanya mulai</p>
+    <div class="line"></div>
 
-<p>i ga akan pernah bosenn nginget dan baca ulang semua chat kita mulai dari haii, sorry for bothering uu boleh kenalan ga? disitu i degdeg an banget WKWK TAKUT GA DI JAWAB HEHE LALU LALU KITA NGOBROLIN REALITY CLUB HEHE DISITU I KAYA ORANG FOMO RC KARENA GA DENHER ALBUM BARU WKWK<br>
-TERUS KITA SERING NGOBROL</p>
-</div>
+    <div class="body-copy">
 
-<div class="timeline-item">
-<div class="date">getting closer ♡</div>
-<p>HEHE KITA TUH DARI DESEMBER JUGA UDAH DEKET TAMBAH KE JANUARI HEHE UDAH DEKET BANGET U PULSNG CAMP I TUNGGGUIN AND MORE I MANGGUNG LATIHAN NGABARIN HEHE DISITU MULAI DEKET</p>
-</div>
+      <p>
+        dari awal kita kenal sampai sekarang...
+      </p>
 
-<div class="timeline-item">
-<div class="date">our firsts ♡</div>
-<h3>first meet</h3>
-<p><strong>7 Mei 2026</strong></p>
+      <p>
+        kalau dipikir pikir, ternyata banyak banget yaa hal yang udah
+        kita lewatin bareng
+      </p>
 
-<p>HIHI I MASIH INGET BETAPA NERVOUS NYA AKU PAS NUNGGU U DI DEPAN ES COKLAT MAKAN ESKELIM TEYUSS U NGELIAT I I SAMPERIN TERYSS UU KOKOP ESKRIM AKU WEYY HAHA LALU KITA LARI KE PHOTOMATIC AIRPORT MESKI HAMPIR KETABRAK BANDROS HAHAHAHAA</p>
+      <p>
+        dan lucunya, dulu mungkin i nggak pernah nyangka kalau seseorang
+        yang awalnya cuma i kenal dan DM lewat ig, akhirnya bisa jadi
+        seseorang yang sepenting ini buat i
+      </p>
 
-<p>ABIS TUU KITA FOTO KAYA MALING BURU BURU BANGET WKWK DISITU KITA NGOBROL HEHE I LIAT CANTIKKK BANGETTTSSS LEBIH DARI DI FOTO WOIEIII HAHA ABISNTU KITA BERPISAH NYA DRAMATIS BANHET LARI LARI</p>
-</div>
+      <div class="timeline">
 
-<div class="timeline-item">
-<div class="date">us ♡</div>
+        <div class="timeline-item">
+          <div class="timeline-date">the beginning ♡</div>
+          <div class="timeline-title">17 Desember 19.10</div>
+          <p>
+            di sinilah semuanya mulai
+          </p>
+        </div>
 
-<p>SEBENERNYA KITA GA PERNAH NEMBAK RESMI KAN HAHA TAU TAU JADIAN TAPI I BERSYUKUR U CEWE NYA GA RIBET STANDAR TIKTOK DLL I BERSYUKUR U TUH MAU DI AJAK INI ITU HEHE LOVEE UU BB</p>
-</div>
+        <div class="timeline-item">
+          <div class="timeline-date">getting closer ♡</div>
+          <div class="timeline-title">December — January</div>
+          <p>
+            hehe kita tuh dari desember juga udah deket tambah ke januari
+            hehe udah deket banget u pulang camp i tungguin and more
+            i manggung latihan ngabarin hehe disitu mulai deket
+          </p>
+        </div>
 
-<div class="timeline-item">
-<div class="date">until now ♡</div>
+        <div class="timeline-item">
+          <div class="timeline-date">our firsts ♡</div>
+          <div class="timeline-title">First Meet</div>
+          <p>
+            7 Mei 2026
+          </p>
+        </div>
 
-<p>sekarang</p>
+        <div class="timeline-item">
+          <div class="timeline-date">us ♡</div>
+          <div class="timeline-title">Somehow, Here We Are</div>
+          <p>
+            SEBENERNYA KITA GA PERNAH NEMBAK RESMI KAN HAHA TAU TAU JADIAN
+            TAPI I BERSYUKUR U CEWE NYA GA RIBET STANDAR TIKTOK DLL
+            I BERSYUKUR U TUH MAU DI AJAK INI ITU HEHE LOVEE UU BB
+          </p>
+        </div>
 
-<p>dan ternyata perjalanan kita nggak berhenti di situ ga kerasa ya udah hampir 1 tahun hubungan kita weyy</p>
+      </div>
 
-<p>masih banyak banget cerita, ketawa, random moment, shift malam HAHA, dan hal hal kecil lainnya yang akhirnya jadi bagian dari kita.</p>
+    </div>
 
-<p>dan i masih pengen nambah banyak banget cerita lagi sama kamu sayang</p>
+  </div>
 
-<p><em>to be continued... ♡</em></p>
-</div>
+  <div class="page-number">06</div>
+</section>
+<!-- PAGE 7 -->
+<section class="page editorial-page" data-page="7">
+  <div class="page-inner">
 
-</div>
+    <div class="eyebrow">07 / until now</div>
+
+    <h2>Until<br>Now ♡</h2>
+
+    <div class="line"></div>
+
+    <div class="body-copy">
+
+      <p>
+        sekarang
+      </p>
+
+      <p>
+        dan ternyata perjalanan kita nggak berhenti di situ ga kerasa ya
+        udah hampir 1 tahun hubungan kita weyy
+      </p>
+
+      <p>
+        masih banyak banget cerita, ketawa, random moment, shift malam HAHA,
+        dan hal hal kecil lainnya yang akhirnya jadi bagian dari kita.
+      </p>
+
+      <p>
+        dan i masih pengen nambah banyak banget cerita lagi sama kamu sayang
+      </p>
+
+      <div class="quote">
+        to be continued... ♡
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="page-number">07</div>
 </section>
 
-<section class="page">
-<div class="inner">
-<div class="eyebrow">06 — Music</div>
-<h2>our soundtrack ♡</h2>
 
-<p>hehe ternyata ada beberapa lagu yang kalau i dengerin, pasti langsung keinget kamu</p>
+<!-- PAGE 8 -->
+<section class="page editorial-page" data-page="8">
+  <div class="page-inner">
 
-<p>mungkin buat orang lain ini cuma lagu biasa</p>
+    <div class="eyebrow">08 / our soundtrack</div>
 
-<p>tapi buat i, lagu lagu ini punya cerita dan rasa masing masing tentang kamu dan tentang kita.</p>
+    <h2>Our<br>Soundtrack ♡</h2>
 
-<div class="song">🎵 Reality Club — Anything You Want</div>
-<div class="song">🎵 Payung Teduh — Akad</div>
-<div class="song">🎵 David Bayu — Segalanya Itu Kamu</div>
-<div class="song">🎵 David Bayu — Cincin</div>
-<div class="song">🎵 David Bayu — Di Dalam Jiwa</div>
+    <div class="line"></div>
 
-<p style="margin-top:25px;">dan  masih banyak lagi</p>
+    <div class="body-copy">
 
-<p>setiap lagu ini punya cara sendiri buat bikin i inget sama kamu.</p>
+      <p>
+        hehe ternyata ada beberapa lagu yang kalau i dengerin,
+        pasti langsung keinget kamu
+      </p>
 
-<p>maybe someday, pas kita denger lagu lagu ini lagi, kita bakal inget sama cerita kita yang sekarang. ♡ dan kita bakal nonton konser live bareng nonton mereka aamiin hehe di setiap lagu romantis hanya wajah mu yang ku ingat sayang</p>
-</div>
+      <p>
+        mungkin buat orang lain ini cuma lagu biasa
+      </p>
+
+      <p>
+        tapi buat i, lagu lagu ini punya cerita dan rasa masing masing
+        tentang kamu dan tentang kita.
+      </p>
+
+      <div class="song-card">
+        <div class="song-icon">♪</div>
+        <div>
+          <div class="song-name">Anything You Want</div>
+          <div class="song-artist">Reality Club</div>
+        </div>
+      </div>
+
+      <div class="song-card">
+        <div class="song-icon">♪</div>
+        <div>
+          <div class="song-name">Akad</div>
+          <div class="song-artist">Payung Teduh</div>
+        </div>
+      </div>
+
+      <div class="song-card">
+        <div class="song-icon">♪</div>
+        <div>
+          <div class="song-name">Segalanya Itu Kamu</div>
+          <div class="song-artist">David Bayu</div>
+        </div>
+      </div>
+
+      <div class="song-card">
+        <div class="song-icon">♪</div>
+        <div>
+          <div class="song-name">Cincin</div>
+          <div class="song-artist">David Bayu</div>
+        </div>
+      </div>
+
+      <div class="song-card">
+        <div class="song-icon">♪</div>
+        <div>
+          <div class="song-name">Di Dalam Jiwa</div>
+          <div class="song-artist">David Bayu</div>
+        </div>
+      </div>
+
+      <div class="quote">
+        dan masih banyak lagi
+      </div>
+
+      <p>
+        setiap lagu ini punya cara sendiri buat bikin i inget sama kamu.
+      </p>
+
+      <p>
+        maybe someday, pas kita denger lagu lagu ini lagi, kita bakal inget
+        sama cerita kita yang sekarang. ♡ dan kita bakal nonton konser live
+        bareng nonton mereka aamiin hehe di setiap lagu romantis hanya wajah
+        mu yang ku ingat sayang
+      </p>
+
+    </div>
+
+  </div>
+
+  <div class="page-number">08</div>
 </section>
 
-<section class="page">
-<div class="inner">
-<div class="eyebrow">07 — Someday</div>
-<h2>things i wanna do with you ♡</h2>
 
-<p>sebenernya masih banyak banget hal yang pengen i lakuin sama kamu hehe.</p>
+<!-- PAGE 9 -->
+<section class="page editorial-page" data-page="9">
+  <div class="page-inner">
 
-<p>hal hal kecil yang mungkin keliatannya sederhana, tapi bakal jadi kenangan yang seru kalau dilakuin bareng kamu hehe</p>
+    <div class="eyebrow">09 / things i wanna do</div>
 
-<ul class="list">
-<li>♡ nonton konser bareng</li>
-<li>♡ jalan jalan ke tempat yang belum pernah kita datengin banyak di Bandung</li>
-<li>♡ makan bareng dan nyobain makanan yang belum kita coba</li>
-<li>♡ foto video  sebanyak banyaknya</li>
-<li>♡ bikin lebih banyak memories</li>
-<li>♡ nonton film bareng belum sempet sempet woi</li>
-<li>♡ jalan jalan tanpa tujuan HAHA</li>
-</ul>
+    <h2>Things I Wanna<br>Do With You ♡</h2>
 
-<p>i nggak tau kapan semuanya bisa kita lakuin</p>
+    <div class="line"></div>
 
-<p>tapi i hope someday kita bisa nyoret satu satu dari list ini bareng bareng</p>
+    <div class="body-copy">
 
-<p>dan kalau boleh</p>
+      <p>
+        sebenernya masih banyak banget hal yang pengen i lakuin sama kamu hehe.
+      </p>
 
-<p>i masih mau bikin banyak banget cerita sama kamu cayang cuu</p>
-</div>
+      <p>
+        hal hal kecil yang mungkin keliatannya sederhana, tapi bakal jadi
+        kenangan yang seru kalau dilakuin bareng kamu hehe
+      </p>
+
+      <ul class="list">
+        <li>♡ nonton konser bareng</li>
+        <li>♡ jalan jalan ke tempat yang belum pernah kita datengin banyak di Bandung</li>
+        <li>♡ makan bareng dan nyobain makanan yang belum kita coba</li>
+        <li>♡ foto video sebanyak banyaknya</li>
+        <li>♡ bikin lebih banyak memories</li>
+        <li>♡ nonton film bareng belum sempet sempet woi</li>
+        <li>♡ jalan jalan tanpa tujuan HAHA</li>
+      </ul>
+
+      <div class="quote">
+        satu satu kita coret dari list ini ♡
+      </div>
+
+      <p>
+        i nggak tau kapan semuanya bisa kita lakuin
+      </p>
+
+      <p>
+        tapi i hope someday kita bisa nyoret satu satu dari list ini
+        bareng bareng
+      </p>
+
+      <p>
+        dan kalau boleh
+      </p>
+
+      <p>
+        i masih mau bikin banyak banget cerita sama kamu cayang cuu
+      </p>
+
+    </div>
+
+  </div>
+
+  <div class="page-number">09</div>
 </section>
 
-<section class="page">
-<div class="inner">
-<div class="eyebrow">08 — A Letter</div>
-<h2>a letter for you ♡</h2>
 
-<p>myyy...</p>
+<!-- PAGE 10 -->
+<section class="page editorial-page" data-page="10">
+  <div class="page-inner">
 
-<p>kalau sampai bagian ini berarti kamu udah baca hampir semuanya hehe.</p>
+    <div class="eyebrow">10 / a letter for you</div>
 
-<p>i sebenernya nggak tau harus mulai dari mana, karena rasanya banyak banget yang pengen i bilang ke kamu.</p>
+    <h2>A Letter<br>For You ♡</h2>
 
-<p>selama kita bareng, i belajar kalau ternyata rasa sayang itu nggak selalu tentang hal besar. kadang cuma dari chat kecil, kabar random, ketawa bareng, atau sekadar tau kalau hari ini kamu baik baik aja.</p>
+    <div class="line"></div>
 
-<p>dan i bersyukur banget semua hal kecil itu bisa i rasain sama kamu.</p>
+    <div class="letter">
 
-<p>i tau i bukan orang yang selalu sempurna buat kamu. kadang i bisa ngeselin, kadang terlalu banyak mikir, kadang ada aja tingkah i yang mungkin bikin kamu kesel hehe.</p>
+      <p>
+        myyy...
+      </p>
 
-<p>tapi satu hal yang i tau, i’ll always love you and appreciate having you in my life.</p>
+      <p>
+        kalau sampai bagian ini berarti kamu udah baca hampir semuanya hehe.
+      </p>
 
-<p>dan satu hal lagi yang mungkin nggak selalu i bilang...</p>
+      <p>
+        i sebenernya nggak tau harus mulai dari mana, karena rasanya banyak
+        banget yang pengen i bilang ke kamu.
+      </p>
 
-<p>i’m really proud of you, myyy.</p>
+      <p>
+        selama kita bareng, i belajar kalau ternyata rasa sayang itu nggak
+        selalu tentang hal besar. kadang cuma dari chat kecil, kabar random,
+        ketawa bareng, atau sekadar tau kalau hari ini kamu baik baik aja.
+      </p>
 
-<p>i’m proud of how far you’ve come, of the things you’ve been through, and of how you keep going even when things aren’t always easy.</p>
+      <p>
+        dan i bersyukur banget semua hal kecil itu bisa i rasain sama kamu.
+      </p>
 
-<p>mungkin i nggak selalu tau apa yang ada di kepala kamu atau apa yang lagi kamu hadapin, tapi i hope you know that i’ll always be proud of you, even for the little things.</p>
+      <p>
+        i tau i bukan orang yang selalu sempurna buat kamu. kadang i bisa
+        ngeselin, kadang terlalu banyak mikir, kadang ada aja tingkah i yang
+        mungkin bikin kamu kesel hehe.
+      </p>
 
-<p>makasih yaa, udah mau nemenin i sampai sejauh ini.</p>
+      <p>
+        tapi satu hal yang i tau, i’ll always love you and appreciate having
+        you in my life.
+      </p>
 
-<p>makasih udah mau dengerin cerita i, nemenin hari hari i, dan jadi bagian dari banyak banget momen yang sekarang jadi kenangan favorit i.</p>
+      <p>
+        dan satu hal lagi yang mungkin nggak selalu i bilang...
+      </p>
 
-<p>i don’t know what the future holds for us.</p>
+      <p>
+        i’m really proud of you, bub.
+      </p>
 
-<p>i don't know exactly what tomorrow looks like, but i know i still wanna see it with you.</p>
+      <p>
+        i’m proud of how far you’ve come, of the things you’ve been through,
+        and of how you keep going even when things aren’t always easy.
+      </p>
 
-<p>tapi i hope we can keep making memories together, ketawa bareng, jalan jalan bareng, nonton konser bareng, dan melakukan hal hal random yang cuma kita yang ngerti hehe.</p>
+      <p>
+        mungkin i nggak selalu tau apa yang ada di kepala kamu atau apa yang
+        lagi kamu hadapin, tapi i hope you know that i’ll always be proud of
+        you, even for the little things.
+      </p>
 
-<p>i hope someday we can look back at all of this and say,</p>
+      <p>
+        makasih yaa, udah mau nemenin i sampai sejauh ini.
+      </p>
 
-<div class="quote">"anjir, ternyata kita udah sejauh ini yaa."</div>
+      <p>
+        makasih udah mau dengerin cerita i, nemenin hari hari i, dan jadi
+        bagian dari banyak banget momen yang sekarang jadi kenangan favorit i.
+      </p>
 
-<p>so yeah...</p>
+      <p>
+        i don’t know what the future holds for us.
+      </p>
 
-<p>thank you for being you, myyy.</p>
+      <p>
+        i don't know exactly what tomorrow looks like, but i know i still
+        wanna see it with you.
+      </p>
 
-<p>thank you for staying with me.</p>
+      <p>
+        tapi i hope we can keep making memories together, ketawa bareng,
+        jalan jalan bareng, nonton konser bareng, dan melakukan hal hal
+        random yang cuma kita yang ngerti hehe.
+      </p>
 
-<p>and thank you for becoming one of the most important people in my life.</p>
+      <p>
+        i hope someday we can look back at all of this and say,
+      </p>
 
-<p>i love you so much, babee.</p>
+      <div class="quote">
+        "anjir, ternyata kita udah sejauh ini yaa."
+      </div>
 
-<p>always, anytime, anywhere. ♡</p>
-</div>
+      <p>
+        so yeah...
+      </p>
+
+      <p>
+        thank you for being you, babe.
+      </p>
+
+      <p>
+        thank you for staying with me.
+      </p>
+
+      <p>
+        and thank you for becoming one of the most important people in my life.
+      </p>
+
+      <p>
+        i love you so much, babee.
+      </p>
+
+      <p>
+        always, anytime, anywhere. ♡
+      </p>
+
+      <div class="signature">
+        with love, always.
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="page-number">10</div>
 </section>
 
-<section class="page">
-<div class="inner">
-<div class="eyebrow">09 — Thank You</div>
-<h2>thank you ♡</h2>
 
-<p>myyy...</p>
+<!-- PAGE 11 -->
+<section class="page editorial-page" data-page="11">
+  <div class="page-inner">
 
-<p>thank you yaa.</p>
+    <div class="eyebrow">11 / thank you</div>
 
-<p>thank you for every little thing you’ve done for me, even the things you probably don’t realize meant so much to me.</p>
+    <h2>Thank<br>You ♡</h2>
 
-<p>thank you for every chat, every call, every laugh, every random story, every video note, and every little moment we’ve shared.</p>
+    <div class="line"></div>
 
-<p>thank you for making my days feel a little warmer just by being there.</p>
+    <div class="body-copy">
 
-<p>thank you for being someone i can laugh with, talk to, and make memories with.</p>
+      <p>
+        bub...
+      </p>
 
-<p>and most importantly...</p>
+      <p>
+        thank you yaa.
+      </p>
 
-<p>thank you for being a part of my life.</p>
+      <p>
+        thank you for every little thing you’ve done for me, even the things
+        you probably don’t realize meant so much to me.
+      </p>
 
-<p>i might not always say it,</p>
+      <p>
+        thank you for every chat, every call, every laugh, every random story,
+        every video note, and every little moment we’ve shared.
+      </p>
 
-<p>but i really, really appreciate you.</p>
+      <p>
+        thank you for making my days feel a little warmer just by being there.
+      </p>
 
-<p>more than you know. ♡</p>
-</div>
+      <p>
+        thank you for being someone i can laugh with, talk to, and make
+        memories with.
+      </p>
+
+      <div class="quote">
+        and most importantly...
+      </div>
+
+      <p>
+        thank you for being a part of my life.
+      </p>
+
+      <p>
+        i might not always say it,
+      </p>
+
+      <p>
+        but i really, really appreciate you.
+      </p>
+
+      <p style="text-align:center;">
+        more than you know. ♡
+      </p>
+
+    </div>
+
+  </div>
+
+  <div class="page-number">11</div>
 </section>
 
-<section class="page">
-<div class="inner">
-<div class="eyebrow">10 — Until Now</div>
-<h2>until now ♡</h2>
 
-<p>kalau i lihat kita sekarang...</p>
+<!-- PAGE 12 -->
+<section class="page editorial-page" data-page="12">
+  <div class="page-inner">
 
-<p>ternyata kita udah sejauh ini yaa, myyy.</p>
+    <div class="eyebrow">12 / until now</div>
 
-<p>dari yang awalnya cuma dua orang yang ngobrol lewat ig, sampai akhirnya kamu jadi salah satu bagian paling penting dalam hari hari i.</p>
+    <h2>Until<br>Now ♡</h2>
 
-<p>banyak banget hal yang udah kita lewatin.</p>
+    <div class="line"></div>
 
-<p>ada senengnya, ada capeknya, ada randomnya, ada dramanya juga HAHA.</p>
+    <div class="body-copy">
 
-<p>tapi somehow, kita masih di sini.</p>
+      <p>
+        kalau i lihat kita sekarang...
+      </p>
 
-<p>masih ngobrol.<br>
-masih ketawa.<br>
-masih saling cerita.<br>
-masih bikin cerita baru.</p>
+      <p>
+        ternyata kita udah sejauh ini yaa, babe.
+      </p>
 
-<p>dan jujur...</p>
+      <p>
+        dari yang awalnya cuma dua orang yang ngobrol lewat ig, sampai
+        akhirnya kamu jadi salah satu bagian paling penting dalam hari hari i.
+      </p>
 
-<p>i’m really happy that it’s you.</p>
+      <p>
+        banyak banget hal yang udah kita lewatin.
+      </p>
 
-<p>kalau semua yang udah kita lewatin sampai sekarang adalah bagian dari cerita kita,</p>
+      <ul class="list">
+        <li>ada senengnya</li>
+        <li>ada capeknya</li>
+        <li>ada randomnya</li>
+        <li>ada dramanya juga HAHA</li>
+      </ul>
 
-<p>i hope this is only the beginning. ♡</p>
-</div>
+      <p>
+        tapi somehow, kita masih di sini.
+      </p>
+
+      <div class="quote">
+        masih ngobrol.<br>
+        masih ketawa.<br>
+        masih saling cerita.<br>
+        masih bikin cerita baru.
+      </div>
+
+      <p>
+        dan jujur...
+      </p>
+
+      <p>
+        i’m really happy that it’s you.
+      </p>
+
+      <p>
+        kalau semua yang udah kita lewatin sampai sekarang adalah bagian
+        dari cerita kita,
+      </p>
+
+      <p>
+        i hope this is only the beginning. ♡
+      </p>
+
+    </div>
+
+  </div>
+
+  <div class="page-number">12</div>
+</section>
+<!-- PAGE 13 -->
+<section class="page editorial-page" data-page="13">
+  <div class="page-inner">
+
+    <div class="eyebrow">13 / our future</div>
+
+    <h2>Our<br>Future ♡</h2>
+
+    <div class="line"></div>
+
+    <div class="body-copy">
+
+      <p>
+        kalau ditanya i pengen apa sama kamu kedepannya...
+      </p>
+
+      <p>
+        sebenernya jawabannya banyak banget hehe.
+      </p>
+
+      <p>
+        i pengen masih punya banyak waktu sama kamu.
+      </p>
+
+      <p>
+        masih pengen ketemu kamu lagi, jalan jalan, nonton konser,
+        makan bareng, foto foto, dan ngelakuin hal hal random yang
+        bahkan sekarang belum kepikiran.
+      </p>
+
+      <ul class="list">
+        <li>♡ i wanna see more places with you.</li>
+        <li>♡ i wanna make more memories with you.</li>
+        <li>♡ i wanna watch our favorite artists perform together.</li>
+        <li>♡ i wanna laugh at stupid things with you.</li>
+        <li>♡ i wanna see you grow, and i wanna grow with you.</li>
+      </ul>
+
+      <div class="quote">
+        "ternyata dulu kita pernah berharap sejauh ini yaa."
+      </div>
+
+      <p>
+        dan kalau suatu hari nanti kita buka lagi website ini...
+      </p>
+
+      <p>
+        i don't know exactly where life will take us.
+      </p>
+
+      <p>
+        but wherever we end up,
+      </p>
+
+      <p>
+        i hope there’s still a little place for me beside you.
+      </p>
+
+      <p>
+        so for now...
+      </p>
+
+      <p>
+        let's just keep going, keep loving, keep laughing, and keep making
+        our little story.
+      </p>
+
+      <p style="text-align:center; font-family:'Playfair Display',serif; font-size:21px;">
+        one day at a time.<br>
+        together. ♡
+      </p>
+
+    </div>
+
+  </div>
+
+  <div class="page-number">13</div>
 </section>
 
-<section class="page">
-<div class="inner">
-<div class="eyebrow">11 — The Future</div>
-<h2>our future ♡</h2>
 
-<p>kalau ditanya i pengen apa sama kamu kedepannya...</p>
+<!-- PAGE 14 -->
+<section class="page final-page center-page" data-page="14">
+  <div class="page-inner">
 
-<p>sebenernya jawabannya banyak banget hehe.</p>
+    <div class="eyebrow">14 / the next chapter</div>
 
-<p>i pengen masih punya banyak waktu sama kamu.</p>
+    <h2>The End?<br>♡</h2>
 
-<p>masih pengen ketemu kamu lagi, jalan jalan, nonton konser, makan bareng, foto foto, dan ngelakuin hal hal random yang bahkan sekarang belum kepikiran.</p>
+    <div class="line"></div>
 
-<p>i wanna see more places with you.</p>
+    <div class="body-copy">
 
-<p>i wanna make more memories with you.</p>
+      <p>
+        hehe kayanya ini bukan the end deh soal nya kita ga ada akhir nya
+        dan cerita kita masih panjang bangetttt
+      </p>
 
-<p>i wanna watch our favorite artists perform together.</p>
+      <p>
+        masih bakal ada banyak cerita baru,
+        banyak ketawa,
+        banyak momen random,
+        dan pastinya banyak hal kecil yang bakal kita lewatin bareng.
+      </p>
 
-<p>i wanna laugh at stupid things with you.</p>
+      <div class="quote">
+        jadi...
+      </div>
 
-<p>i wanna see you grow, and i wanna grow with you.</p>
+      <p>
+        sampai ketemu di cerita kita selanjutnya yaa,
+        babe lovee
+      </p>
 
-<p>dan kalau suatu hari nanti kita buka lagi website ini...</p>
+      <p>
+        i love youu, always anytime anywhere♡
+      </p>
 
-<p>i hope kita bisa liat semua ini sambil bilang,</p>
+      <p style="font-size:28px; margin-top:25px;">
+        muach 💋
+      </p>
 
-<div class="quote">"ternyata dulu kita pernah berharap sejauh ini yaa."</div>
+    </div>
 
-<p>i don't know exactly where life will take us.</p>
+  </div>
 
-<p>but wherever we end up,</p>
-
-<p>i hope there’s still a little place for me beside you.</p>
-
-<p>so for now...</p>
-
-<p>let's just keep going, keep loving, keep laughing, and keep making our little story.</p>
-
-<p>one day at a time.</p>
-
-<p>together. ♡</p>
-</div>
+  <div class="page-number">14</div>
 </section>
 
-<section class="page">
-<div class="inner">
-<div class="eyebrow">12 — Not Really</div>
-<h2>the end? ♡</h2>
-
-<p>hehe kayanya ini bukan the end deh soal nya kita ga ada akhir nya dan cerita kita masih panjang bangetttt</p>
-
-<p>masih bakal ada banyak cerita baru,<br>
-banyak ketawa,<br>
-banyak momen random,<br>
-dan pastinya banyak hal kecil yang bakal kita lewatin bareng.</p>
-
-<p>jadi...</p>
-
-<p>sampai ketemu di cerita kita selanjutnya yaa, myyy lovee</p>
-
-<p>i love youu, always anytime anywhere♡</p>
-
-<p>muach 💋</p>
 </div>
-</section>
 
-<section class="page">
-<div class="inner">
-<div class="eyebrow">13 — After Closing</div>
-<h2>after closing ♡</h2>
 
-<p>kalau kamu masih baca sampai sini...</p>
+<!-- NAVIGATION -->
+<nav class="nav">
 
-<p>berarti semuanya udah selesai hehe.</p>
+  <button id="prevBtn" aria-label="Previous page">
+    ←
+  </button>
 
-<p>makasih yaa, udah mau baca semuanya dari awal sampai akhir.</p>
+  <div class="counter">
+    <span id="currentPage">1</span>
+    / 14
+  </div>
 
-<p>mungkin website ini cuma kumpulan tulisan kecil dari i,</p>
+  <button id="nextBtn" aria-label="Next page">
+    →
+  </button>
 
-<p>tapi setiap kata di sini i tulis karena kamu.</p>
+</nav>
 
-<p>i hope someday kamu bisa buka ini lagi,</p>
-
-<p>entah pas lagi kangen,<br>
-lagi seneng,<br>
-atau cuma lagi pengen inget cerita kita.</p>
-
-<p>dan kalau suatu hari nanti kita udah punya jauh lebih banyak cerita daripada yang ada di sini...</p>
-
-<p>i hope we’ll come back to this page,</p>
-
-<p>look at everything we’ve been through,</p>
-
-<p>and smile.</p>
-
-<p>for now,</p>
-
-<p>this is where this little story ends.</p>
-
-<div class="quote">but ours?<br><br>not yet. ♡</div>
-
-<p>i love you, myyy.</p>
-
-<p>see you in our next chapter. 🌷</p>
-</div>
-</section>
-
-<div class="bottom">
-<button class="nav-btn" id="prev">←</button>
-<div class="counter" id="counter">1 / 14</div>
-<button class="nav-btn" id="next">→</button>
-</div>
 
 <script>
 const pages = document.querySelectorAll(".page");
-const counter = document.getElementById("counter");
+const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
+const currentPage = document.getElementById("currentPage");
 const progress = document.getElementById("progress");
-let index = 0;
 
-function showPage(i){
-  if(i < 0) i = 0;
-  if(i >= pages.length) i = pages.length - 1;
+let current = 0;
 
-  pages.forEach((page,n)=>{
-    page.classList.toggle("active", n === i);
-    if(n === i) page.scrollTop = 0;
+function showPage(index) {
+  if (index < 0) index = 0;
+  if (index >= pages.length) index = pages.length - 1;
+
+  pages.forEach((page, i) => {
+    page.classList.toggle("active", i === index);
   });
 
-  index = i;
-  counter.textContent = `${index + 1} / ${pages.length}`;
-  progress.style.width = `${((index + 1) / pages.length) * 100}%`;
+  current = index;
 
-  document.getElementById("prev").style.opacity =
-    index === 0 ? ".35" : "1";
+  currentPage.textContent = current + 1;
 
-  document.getElementById("next").style.opacity =
-    index === pages.length - 1 ? ".35" : "1";
+  const percent = ((current + 1) / pages.length) * 100;
+  progress.style.width = percent + "%";
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+
+  prevBtn.style.opacity = current === 0 ? ".35" : "1";
+  nextBtn.style.opacity = current === pages.length - 1 ? ".35" : "1";
 }
 
-document.getElementById("next").addEventListener("click",()=>{
-  showPage(index + 1);
-});
-
-document.getElementById("prev").addEventListener("click",()=>{
-  showPage(index - 1);
-});
-
-document.addEventListener("keydown",(e)=>{
-  if(e.key === "ArrowRight" || e.key === " "){
-    e.preventDefault();
-    showPage(index + 1);
+function nextPage() {
+  if (current < pages.length - 1) {
+    showPage(current + 1);
   }
+}
 
-  if(e.key === "ArrowLeft"){
-    e.preventDefault();
-    showPage(index - 1);
+function prevPage() {
+  if (current > 0) {
+    showPage(current - 1);
   }
-});
+}
 
-let startX = 0;
-let endX = 0;
+nextBtn.addEventListener("click", nextPage);
+prevBtn.addEventListener("click", prevPage);
 
-document.addEventListener("touchstart",(e)=>{
-  startX = e.changedTouches[0].screenX;
-});
 
-document.addEventListener("touchend",(e)=>{
-  endX = e.changedTouches[0].screenX;
-
-  const distance = endX - startX;
-
-  if(Math.abs(distance) < 50) return;
-
-  if(distance < 0){
-    showPage(index + 1);
-  }else{
-    showPage(index - 1);
+/* COVER TAP */
+pages[0].addEventListener("click", function(e) {
+  if (
+    e.target === pages[0] ||
+    e.target.closest(".cover-title") ||
+    e.target.closest(".open-text") ||
+    e.target.closest(".cover-mark")
+  ) {
+    nextPage();
   }
 });
 
+
+/* KEYBOARD */
+document.addEventListener("keydown", function(e) {
+
+  if (e.key === "ArrowRight") {
+    nextPage();
+  }
+
+  if (e.key === "ArrowLeft") {
+    prevPage();
+  }
+
+});
+
+
+/* SWIPE MOBILE */
+let touchStartX = 0;
+let touchEndX = 0;
+
+document.addEventListener("touchstart", function(e) {
+  touchStartX = e.changedTouches[0].screenX;
+}, { passive: true });
+
+document.addEventListener("touchend", function(e) {
+  touchEndX = e.changedTouches[0].screenX;
+
+  const distance = touchEndX - touchStartX;
+
+  if (Math.abs(distance) < 60) return;
+
+  if (distance < 0) {
+    nextPage();
+  } else {
+    prevPage();
+  }
+
+}, { passive: true });
+
+
+/* INIT */
 showPage(0);
 </script>
 
